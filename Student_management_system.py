@@ -97,7 +97,7 @@ def add_student():
     student={
         'basic_info':basic_info,
         'age':age,
-        'course':courses
+        'course':course
     }
     
     students.append(student)
@@ -105,22 +105,38 @@ def add_student():
     print("Student added successfully.\n")
     
 def view_student():
+    if not students:
+        print("No students available.\n")
+        return
     for student in students:
-        print(f"Student Name:",student["basic_info"][0])
-        print(f"Student name: {student['basic_info'][1]}")
+        print(f"Student ID:",student["basic_info"][0])
+        print(f"Student Name: {student['basic_info'][1]}")
         print(f"Student age: {student['age']}")
         print(f"Student course: {student['course']}")
+        
+def delete_student():
+    sid=int(input("Enter student ID to delete student details: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            students.remove(student)
+            print("student details deleted successfully.\n")
+            return
+        print("student ID not found. Please try again.\n")
+            
         
 while True:
     print("1. Add Student")
     print("2. View student")
-    print("3. Exit")
+    print("3. Delete student details")
+    print("0. Exit")
     choice=int(input("Enter your choice: "))
     if choice==1:
         add_student()
     elif choice==2:
         view_student()
     elif choice==3:
+        delete_student()
+    elif choice==0:
         print("Exiting from program.\n")
         break
     else:

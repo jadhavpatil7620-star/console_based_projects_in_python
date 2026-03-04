@@ -83,89 +83,111 @@
 #         print("Invalid choice. Please try again.\n")
 
 
-# students=[]
-# courses=set()
+students=[]
+courses=set()
 
-# def add_student():
-#     sid=int(input("Enter student ID: "))
-#     name=input("Enter student name: ")
-#     age=int(input("Enter student age: "))
-#     course=input("Enter course name: ")
+def add_student():
+    sid=int(input("Enter student ID: "))
+    name=input("Enter student name: ")
+    age=int(input("Enter student age: "))
+    course=input("Enter course name: ")
     
-#     basic_info=(sid,name)
+    basic_info=(sid,name)
     
-#     student={
-#         'basic_info':basic_info,
-#         'age':age,
-#         'course':courses
-#     }
+    student={
+        'basic_info':basic_info,
+        'age':age,
+        'course':course
+    }
     
-#     students.append(student)
-#     courses.add(course)
-#     print("Student added successfully.\n")
+    students.append(student)
+    courses.add(course)
+    print("Student added successfully.\n")
     
-# def view_student():
-#     for student in students:
-#         print(f"Student Name:",student["basic_info"][0])
-#         print(f"Student name: {student['basic_info'][1]}")
-#         print(f"Student age: {student['age']}")
-#         print(f"Student course: {student['course']}")
+def view_student():
+    sid=int(input("Enter student ID to view details: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            print(f"\nStudent ID:",student["basic_info"][0])
+            print(f"Student Name: {student['basic_info'][1]}")
+            print(f"Student age: {student['age']}")
+            print(f"Student course: {student['course']}\n")
+            return
+        print("Student ID not found in details.\n")
         
+def update_details():
+    sid=int(input("Enter student ID to update details: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            name=input("Enter student new name: ")
+            age=int(input("Enter student new age: "))
+            course=input("Enter new course name: ")
+            student['basic_info']=(sid,name)
+            student['age']=(age)
+            student['course']=(course)
+            print("Student details updated successfully.\n")
+            return
+        print("student not found.\n")
+        
+while True:
+    print("1. Add Student")
+    print("2. View student")
+    print("3. Update student details")
+    print("0. Exit")
+    choice=int(input("Enter your choice: "))
+    if choice==1:
+        add_student()
+    elif choice==2:
+        # print("Enter student ID to view details: \n")
+        view_student()
+    elif choice==3:
+        update_details()
+    elif choice==0:
+        print("Exiting from program.\n")
+        break
+    else:
+        print("Invalid choice. Please try again.\n")
+
+# class Student:
+#     def __init__(self):
+#         students=[]
+#         courses=set()
+#     def add_student(self):
+#         sid=int(input("Enter student ID: "))
+#         name=input("Enter student name: ")
+#         course=input("Enter course name: ")
+#         age=int(input("Enter age: "))
+        
+#         basic_info=(sid,name)
+        
+#         student={
+#             'basic_info':basic_info,
+#             'course':self.courses,
+#             'age':age
+#         }
+        
+#         self.students.append(student)
+#         self.courses.add(course)
+#         print("Student added successfully.\n")
+        
+#     def view_student(self):
+#         for s in self.students:
+#             print(f"Student ID: {s['basic_info'][0]}")
+#             print(f"Student name: {s['basic_info'][1]}")
+#             print(f"Course name: {s['course']}")
+#             print(f"Age of student: {s['age']}")
+            
+# manage=Student()
 # while True:
-#     print("1. Add Student")
+#     print("1. Add student")
 #     print("2. View student")
 #     print("3. Exit")
 #     choice=int(input("Enter your choice: "))
 #     if choice==1:
-#         add_student()
+#         Student.add_student()
 #     elif choice==2:
-#         view_student()
+#         Student.view_student()
 #     elif choice==3:
-#         print("Exiting from program.\n")
 #         break
 #     else:
-#         print("Invalid choice. Please try again.\n")
-
-class Student:
-    def __init__(self):
-        students=[]
-        courses=set()
-    def add_student(self):
-        sid=int(input("Enter student ID: "))
-        name=input("Enter student name: ")
-        course=input("Enter course name: ")
-        age=int(input("Enter age: "))
-        
-        basic_info=(sid,name)
-        
-        student={
-            'basic_info':basic_info,
-            'course':self.courses,
-            'age':age
-        }
-        
-        self.students.append(student)
-        self.courses.add(course)
-        print("Student added successfully.\n")
-        
-    def view_student(self):
-        for s in self.students:
-            print(f"Student ID: {s['basic_info'][0]}")
-            print(f"Student name: {s['basic_info'][1]}")
-            print(f"Course name: {s['course']}")
-            print(f"Age of student: {s['age']}")
-            
-manage=Student()
-while True:
-    print("1. Add student")
-    print("2. View student")
-    print("3. Exit")
-    choice=int(input("Enter your choice: "))
-    if choice==1:
-        Student.add_student()
-    elif choice==2:
-        Student.view_student()
-    elif choice==3:
-        break
-    else:
-        print("Invalid choice.\n")
+#         print("Invalid choice.\n")

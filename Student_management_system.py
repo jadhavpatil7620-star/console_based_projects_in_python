@@ -82,102 +82,6 @@
 #     else:
 #         print("Invalid choice. Please try again.\n")
 
-
-students=[]
-courses=set()
-
-def add_student():
-    sid=int(input("Enter student ID: "))
-    for student in students:
-        if student['basic_info'][0]==sid:
-            print("Student ID already exitis.\n")
-            return
-    name=input("Enter student name: ")
-    age=int(input("Enter student age: "))
-    course=input("Enter course name: ")
-    
-    basic_info=(sid,name)
-    
-    student={
-        'basic_info':basic_info,
-        'age':age,
-        'course':course
-    }
-    
-    students.append(student)
-    courses.add(course)
-    print("Student added successfully.\n")
-    
-def view_student():
-    if not students:
-        print("No students available.\n")
-        return
-    for student in students:
-        print(f"Student ID:",student["basic_info"][0])
-        print(f"Student Name: {student['basic_info'][1]}")
-        print(f"Student age: {student['age']}")
-        print(f"Student course: {student['course']}")
-        
-def delete_student():
-    sid=int(input("Enter student ID to delete student details: "))
-    for student in students:
-        if student['basic_info'][0]==sid:
-            students.remove(student)
-            print("student details deleted successfully.\n")
-            return
-        print("student ID not found. Please try again.\n")
-            
-    sid=int(input("Enter student ID to view details: "))
-    for student in students:
-        if student['basic_info'][0]==sid:
-            print(f"\nStudent ID:",student["basic_info"][0])
-            print(f"Student Name: {student['basic_info'][1]}")
-            print(f"Student age: {student['age']}")
-            print(f"Student course: {student['course']}\n")
-            return
-        print("Student ID not found in details.\n")
-        
-def update_details():
-    sid=int(input("Enter student ID to update details: "))
-    for student in students:
-        if student['basic_info'][0]==sid:
-            name=input("Enter student new name: ")
-            age=int(input("Enter student new age: "))
-            course=input("Enter new course name: ")
-            student['basic_info']=(sid,name)
-            student['age']=(age)
-            student['course']=(course)
-            print("Student details updated successfully.\n")
-            return
-        print("student not found.\n")
-        
-def total_students():
-    print(f"Total students: {len(students)}")
-        
-while True:
-    print("1. Add Student")
-    print("2. View student")
-    print("3. Delete student details")
-    print("4. Update student details")
-    print("5. View total students")
-    print("0. Exit")
-    choice=int(input("Enter your choice: "))
-    if choice==1:
-        add_student()
-    elif choice==2:
-        view_student()
-    elif choice==3:
-        delete_student()
-    elif choice==4:
-        update_details()
-    elif choice==5:
-        total_students()
-    elif choice==0:
-        print("Exiting from program.\n")
-        break
-    else:
-        print("Invalid choice. Please try again.\n")
-
 # class Student:
 #     def __init__(self):
 #         students=[]
@@ -221,3 +125,126 @@ while True:
 #         break
 #     else:
 #         print("Invalid choice.\n")
+
+
+students=[]
+courses=set()
+
+def add_student():
+    sid=int(input("Enter student ID: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            print("Student ID already exitis.\n")
+            return
+    name=input("Enter student name: ")
+    age=int(input("Enter student age: "))
+    course=input("Enter course name: ")
+    
+    basic_info=(sid,name)
+    
+    student={
+        'basic_info':basic_info,
+        'age':age,
+        'course':course
+    }
+    
+    students.append(student)
+    courses.add(course)
+    print("Student added successfully.\n")
+    
+def view_student():
+    if not students:
+        print("No students available.\n")
+        return
+    for student in students:
+        print(f"\nStudent ID:",student["basic_info"][0])
+        print(f"Student Name: {student['basic_info'][1]}")
+        print(f"Student age: {student['age']}")
+        print(f"Student course: {student['course']}\n")
+        
+def delete_student():
+    sid=int(input("Enter student ID to delete student details: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            students.remove(student)
+            print("student details deleted successfully.\n")
+            return
+        print("student ID not found. Please try again.\n")
+            
+    sid=int(input("Enter student ID to view details: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            print(f"\nStudent ID:",student["basic_info"][0])
+            print(f"Student Name: {student['basic_info'][1]}")
+            print(f"Student age: {student['age']}")
+            print(f"Student course: {student['course']}\n")
+            return
+        print("Student ID not found in details.\n")
+        
+def update_details():
+    sid=int(input("Enter student ID to update details: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            name=input("Enter student new name: ")
+            age=int(input("Enter student new age: "))
+            course=input("Enter new course name: ")
+            student['basic_info']=(sid,name)
+            student['age']=(age)
+            student['course']=(course)
+            print("Student details updated successfully.\n")
+            return
+        print("student not found.\n")
+        
+def total_students():
+    print(f"\nTotal students: {len(students)}\n")
+    
+def search_by_id():
+    sid=int(input("\nEnter student ID to view specific student: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            print(f"\nStudent ID:",student["basic_info"][0])
+            print(f"Student Name: {student['basic_info'][1]}")
+            print(f"Student age: {student['age']}")
+            print(f"Student course: {student['course']}\n")
+            return
+    print("Student ID not found. Please try again,\n")
+    
+def course_wise_student():
+    course_count={}
+    for student in students:
+        course=student['course']
+        if course in course_count:
+            course_count[course]+=1
+        else:
+            course_count[course]=1
+    for course,count in course_count.items():
+        print("\n",course,"->",count)
+        
+while True:
+    print("1. Add Student")
+    print("2. View all students")
+    print("3. Delete student details")
+    print("4. Update student details")
+    print("5. View total students")
+    print("6. Search student details by it's ID")
+    print("0. Exit")
+    choice=int(input("Enter your choice: "))
+    if choice==1:
+        add_student()
+    elif choice==2:
+        view_student()
+    elif choice==3:
+        delete_student()
+    elif choice==4:
+        update_details()
+    elif choice==5:
+        total_students()
+    elif choice==6:
+        search_by_id()
+    elif choice==7:
+        course_wise_student()
+    elif choice==0:
+        print("Exiting from program.\n")
+        break
+    else:
+        print("Invalid choice. Please try again.\n")

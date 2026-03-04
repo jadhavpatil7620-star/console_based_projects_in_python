@@ -155,7 +155,7 @@ while True:
     print("1. Add Student")
     print("2. View student")
     print("3. Delete student details")
-    print("3. Update student details")
+    print("4. Update student details")
     print("0. Exit")
     choice=int(input("Enter your choice: "))
     if choice==1:
@@ -164,9 +164,7 @@ while True:
         view_student()
     elif choice==3:
         delete_student()
-        # print("Enter student ID to view details: \n")
-        view_student()
-    elif choice==3:
+    elif choice==4:
         update_details()
     elif choice==0:
         print("Exiting from program.\n")

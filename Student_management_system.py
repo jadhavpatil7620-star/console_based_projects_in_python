@@ -88,6 +88,10 @@ courses=set()
 
 def add_student():
     sid=int(input("Enter student ID: "))
+    for student in students:
+        if student['basic_info'][0]==sid:
+            print("Student ID already exitis.\n")
+            return
     name=input("Enter student name: ")
     age=int(input("Enter student age: "))
     course=input("Enter course name: ")

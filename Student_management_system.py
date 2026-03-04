@@ -151,11 +151,15 @@ def update_details():
             return
         print("student not found.\n")
         
+def total_students():
+    print(f"Total students: {len(students)}")
+        
 while True:
     print("1. Add Student")
     print("2. View student")
     print("3. Delete student details")
     print("4. Update student details")
+    print("5. View total students")
     print("0. Exit")
     choice=int(input("Enter your choice: "))
     if choice==1:
@@ -166,11 +170,12 @@ while True:
         delete_student()
     elif choice==4:
         update_details()
+    elif choice==5:
+        total_students()
     elif choice==0:
         print("Exiting from program.\n")
         break
     else:
-        print("Invalid choice. Please try again.\n")
         print("Invalid choice. Please try again.\n")
 
 # class Student:
